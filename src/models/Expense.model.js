@@ -29,7 +29,6 @@ const Expense = sequelize.define(
     },
     amount: {
       type: DataTypes.INTEGER,
-      autoIncrement: false,
       allowNull: false,
     },
     category: {

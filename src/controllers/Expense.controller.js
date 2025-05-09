@@ -165,19 +165,19 @@ async function update(req, res) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    if (body.title && typeof body.title !== 'string') {
+    if ('title' in body && typeof body.title !== 'string') {
       return res.status(400).json({ message: 'Invalid title format' });
     }
 
-    if (body.amount && typeof body.amount !== 'number') {
+    if ('amount' in body && typeof body.amount !== 'number') {
       return res.status(400).json({ message: 'Invalid amount format' });
     }
 
-    if (body.category && typeof body.category !== 'string') {
+    if ('category' in body && typeof body.category !== 'string') {
       return res.status(400).json({ message: 'Invalid category format' });
     }
 
-    if (body.spentAt && isNaN(Date.parse(body.spentAt))) {
+    if ('spentAt' in body && isNaN(Date.parse(body.spentAt))) {
       return res.status(400).json({ message: 'Invalid spentAt format' });
     }
 
