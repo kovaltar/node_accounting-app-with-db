@@ -10,7 +10,11 @@ async function getUserById(id) {
 }
 
 async function deleteUser(id) {
-  return User.findByPk(id).then((user) => user.destroy());
+  if (User.findByPk(id)) {
+    return User.findByPk(id).then((user) => user.destroy());
+  }
+
+  return null;
 }
 
 async function createUser(name) {
@@ -18,7 +22,11 @@ async function createUser(name) {
 }
 
 async function updateUser(id, data) {
-  return User.findByPk(id).then((user) => user.update(data));
+  if (User.findByPk(id)) {
+    return User.findByPk(id).then((user) => user.update(data));
+  }
+
+  return null;
 }
 
 module.exports = {

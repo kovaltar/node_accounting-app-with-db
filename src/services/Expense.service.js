@@ -10,7 +10,11 @@ async function getExpenseById(id) {
 }
 
 async function deleteExpense(id) {
-  return Expense.findByPk(id).then((expense) => expense.destroy());
+  if (Expense.findByPk(id)) {
+    return Expense.findByPk(id).then((expense) => expense.destroy());
+  }
+
+  return null;
 }
 
 async function createExpense(data) {
@@ -18,7 +22,11 @@ async function createExpense(data) {
 }
 
 async function updateExpense(id, data) {
-  return Expense.findByPk(id).then((expense) => expense.update(data));
+  if (Expense.findByPk(id)) {
+    return Expense.findByPk(id).then((expense) => expense.update(data));
+  }
+
+  return null;
 }
 
 module.exports = {
